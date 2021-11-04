@@ -17,9 +17,7 @@ const HomePage = () => {
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
 
-    wait(1000)
-      .then(() => setRefreshing(false))
-      .then(hihi());
+    wait(1000).then(() => setRefreshing(false));
   }, []);
 
   const [data, setData] = useState([]);
