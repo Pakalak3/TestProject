@@ -14,10 +14,10 @@ const profilePage = () => {
   };
 
   const renderMe = ({item}) => (
-    <TouchableOpacity style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.textStyle1}> {item.name} </Text>
       <Text style={styles.textStyle2}> {item.email} </Text>
-    </TouchableOpacity>
+    </View>
   );
   useEffect(() => {
     getInfo();
@@ -29,12 +29,7 @@ const profilePage = () => {
         Details
       </Text>
       <Text> </Text>
-      <View style={styles.listContainer}>
-        <Text style={{color: 'grey', textAlign: 'center'}}>
-          {' '}
-          ( Pull to Refresh... ){' '}
-        </Text>
-      </View>
+      <View style={styles.listContainer}></View>
     </View>
   );
 };
