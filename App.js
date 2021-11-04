@@ -9,7 +9,7 @@ const App = () => {
   return (
     <NavigationConatiner>
       <Stack.Navigator
-        initialRouthName="Home"
+        initialRoutName="Home"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={HomePage} />
       </Stack.Navigator>
