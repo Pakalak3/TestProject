@@ -6,9 +6,10 @@ import {
   RefreshControl,
   TouchableOpacity,
 } from 'react-native';
-import styles from './StyleSheet';
+import styles from './stylesheet';
+import {FontAwesome} from '@expo/vector-icons';
 
-const HomePage = () => {
+export default function HomePage({item, navigation}) {
   const wait = timeout => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
@@ -20,20 +21,29 @@ const HomePage = () => {
     wait(1000).then(() => setRefreshing(false));
   }, []);
 
-  const [data, setData] = useState([]);
+  const [details, setDetails] = useState([]);
 
   const getInfo = () => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
       .then(data => {
-        setData(data);
+        setDetails(data);
       });
   };
 
   const renderMe = ({item}) => (
-    <TouchableOpacity style={styles.container}>
-      <Text style={styles.textStyle1}> {item.name} </Text>
-      <Text style={styles.textStyle2}> {item.email} </Text>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => {
+        navigation.navigate('Details', {item});
+      }}>
+      <View style={{padding: 10}}>
+        <FontAwesome name="user" size={30} color="black" />
+      </View>
+      <View style={{paddingLeft: 10}}>
+        <Text style={styles.textStyle1}> {item.name} </Text>
+        <Text style={styles.textStyle2}> {item.email} </Text>
+      </View>
     </TouchableOpacity>
   );
   useEffect(() => {
@@ -42,17 +52,15 @@ const HomePage = () => {
 
   return (
     <View style={styles.homeContainer}>
-      <Text style={{fontSize: 25, fontWeight: 'bold'}}>Home</Text>
-      <Text> </Text>
       <View style={styles.listContainer}>
         <Text style={{color: 'grey', textAlign: 'center'}}>
           {' '}
-          ( Pull to Refresh... ){' '}
+          ( Pull to Refresh... )
         </Text>
-        <Text> </Text>
+
         <View>
           <FlatList
-            data={data}
+            data={details}
             renderItem={renderMe}
             refreshControl={
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
@@ -62,6 +70,4 @@ const HomePage = () => {
       </View>
     </View>
   );
-};
-
-export default HomePage;
+}
