@@ -9,7 +9,7 @@ import {
 import styles from './stylesheet';
 import {FontAwesome} from '@expo/vector-icons';
 
-export default function HomePage({item, navigation}) {
+export default function HomePage({navigation}) {
   const wait = timeout => {
     return new Promise(resolve => setTimeout(resolve, timeout));
   };
