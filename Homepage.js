@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import styles from './stylesheet';
-import {FontAwesome} from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function HomePage({navigation}) {
   const wait = timeout => {
@@ -38,7 +38,7 @@ export default function HomePage({navigation}) {
         navigation.navigate('Details', {item});
       }}>
       <View style={{padding: 10}}>
-        <FontAwesome name="user" size={30} color="black" />
+        <Icon name="user" size={30} color="black" />
       </View>
       <View style={{paddingLeft: 10}}>
         <Text style={styles.textStyle1}> {item.name} </Text>
