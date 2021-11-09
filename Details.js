@@ -15,7 +15,13 @@ export default function DetailsPage({route}) {
       }}>
       <View>
         <Text style={styles.textDetailStyle1}>{item.name}</Text>
-        <Text style={{padding: 5, fontSize: 18, textAlign: 'center'}}>
+        <Text
+          style={{
+            padding: 5,
+            fontSize: 18,
+            textAlign: 'center',
+            color: 'black',
+          }}>
           {item.company.name}
         </Text>
       </View>
